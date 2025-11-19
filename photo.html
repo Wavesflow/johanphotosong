@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的摄影主页</title>
+    <style>
+        /* 基础重置 */
+        body { margin: 0; font-family: sans-serif; background: #111; color: #eee; }
+        
+        /* 布局 */
+        header { padding: 40px 20px; text-align: center; }
+        h1 { font-weight: 300; letter-spacing: 2px; }
+        
+        /* 照片网格 - 核心部分 */
+        .gallery {
+            display: grid;
+            /* 自动填充：最小宽度300px，不够就换行 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .photo {
+            position: relative;
+            aspect-ratio: 3/2; /* 强制保持比例 */
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .photo:hover img { transform: scale(1.05); } /* 悬停放大效果 */
+
+        /* 简单的灯箱效果 (点击放大) */
+        #lightbox {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center; align-items: center;
+            z-index: 1000;
+        }
+        #lightbox img { max-width: 90%; max-height: 90%; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>NAME PHOTOGRAPHY</h1>
+    <p>光影记录者</p>
+</header>
+
+<div class="gallery">
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=1" alt="Photo 1"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=2" alt="Photo 2"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=3" alt="Photo 3"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=4" alt="Photo 4"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=5" alt="Photo 5"></div>
+    <div class="photo" onclick="openImg(this)"><img src="https://picsum.photos/800/600?random=6" alt="Photo 6"></div>
+</div>
+
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+    function openImg(element) {
+        const src = element.querySelector('img').src;
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碎碎念</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; background: #111; color: #ccc; line-height: 1.6; }
+        
+        /* 导航栏 - 用于页面切换 */
+        nav { padding: 20px; text-align: center; border-bottom: 1px solid #333; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 1.1em; }
+        nav a:hover { color: #888; }
+
+        /* 时间轴容器 - 限制宽度是为了阅读体验 */
+        .timeline {
+            max-width: 600px; /* 像Twitter一样，中间窄，两边留白 */
+            margin: 40px auto;
+            padding: 0 20px;
+            border-left: 2px solid #333; /* 核心：左边的竖线 */
+        }
+
+        /* 单条内容 */
+        .tweet {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 20px; /* 给左边的圆点留位置 */
+        }
+
+        /* 装饰：时间轴上的小圆点 */
+        .tweet::before {
+            content: '';
+            position: absolute;
+            left: -7px; /* 调整圆点位置使其压在线上 */
+            top: 5px;
+            width: 12px; height: 12px;
+            background: #555;
+            border-radius: 50%;
+        }
+
+        .date { font-size: 0.85em; color: #666; margin-bottom: 5px; }
+        .content { font-size: 1em; color: #eee; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">摄影作品</a>
+    <a href="thoughts.html" style="border-bottom: 1px solid #fff;">碎碎念</a>
+</nav>
+
+<div class="timeline">
+    
+    <div class="tweet">
+        <div class="date">2025-11-19 14:30</div>
+        <div class="content">
+            今天光线太棒了，在街角抓拍到一张很有感觉的猫。摄影有时候就是靠运气。
+            <br><br>
+            <img src="https://picsum.photos/400/200" style="max-width:100%; border-radius:8px;">
+        </div>
+    </div>
+
+    <div class="tweet">
+        <div class="date">2025-11-18 09:15</div>
+        <div class="content">
+            刚修完昨天的图。觉得黑白更有力量，色彩有时候会干扰情绪的表达。
+        </div>
+    </div>
+
+    <div class="tweet">
+        <div class="date">2025-11-10 22:00</div>
+        <div class="content">
+            网站终于上线了！Hello World.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
